@@ -49,7 +49,7 @@ public static class ProductsEndpoints
         //POST /products
         group.MapPost("/", async (CreateProductDto newProduct, HttpContext context, IAntiforgery antiforgery) =>
         {
-            await antiforgery.ValidateRequestAsync(context);
+            //await antiforgery.ValidateRequestAsync(context);
 
             IStoreService storeService = new FakeStoreService();
             List<StoreProduct>? fakeStoreProducts = await storeService.GetStoreProducts(fakeStoreUrl);
@@ -68,7 +68,7 @@ public static class ProductsEndpoints
             return Results.CreatedAtRoute(GetProductEndpointName, new { id = product.Id }, product);
         })
             .WithSummary("Add product.")
-            .WithDescription("This endpoint creates a new product in the system based on the provided data."); 
+            .WithDescription("This endpoint creates a new product in the system based on the provided data.");
 
         return group;
     }

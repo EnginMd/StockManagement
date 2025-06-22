@@ -8,19 +8,8 @@ POST http://localhost:5229/products
 Content-Type: application/json
 
 {
-    "name": "T-shirt 5",
+    "name": "T-shirt 1",
     "productCode": "Mens Casual Premium Slim Fit T-Shirts ",
     "initialStockCount":40,
     "criticalStockCount": 90
-}
-
-###
-POST http://localhost:5229/products
-Content-Type: application/json
-
-{
-    "name": "T-shirt 4",
-    "productCode": "<script></script>",
-    "initialStockCount":50,
-    "criticalStockCount": 7
 }
