@@ -1,6 +1,38 @@
+## Uygulama İsterleri
+### Görev Senaryosu
+
+Aşağıdaki gibi örnek bir senaryo üzerinden örnek bir proje geliştirilmiştir.
+
+Tedarik zincirinizin teknoloji tarafında görev aldığınızı düşünün. Sorumluluğunuz altında olan sistem, mağazalardaki ürünlerin stok seviyesini takip etmekte ve ürünler kritik stok seviyesinin altına düştüğünde uygun tedarikçiden sipariş oluşturmakla yükümlü. Ancak bu sistem hâlâ gelişmekte; size bazı eksikleri tamamlamak, bazı süreçleri otomatize etmek ve bunu mümkün olan en temiz, genişletilebilir mimariyle yapmak düşüyor.
+
+### Görevler
+
+Aşağıdaki maddeleri dikkatle okuyun. Kodunuz bu maddeleri karşılayacak şekilde yapılandırılmalı:
+
+### 1. Ürün Entegrasyonu ve Sanal Katalog
+
+Şirketiniz, Fake Store API’yi bir dış tedarikçi gibi entegre etmiş. Ancak bu API sadece veri sunmakta; ürün ekleme ya da güncelleme işlevselliği bulunmamakta.
+
+İç sisteminizde (in-memory veya session olabilir), **kendi ürün kataloğunuzu oluşturmalı ve Fake Store’daki ürünlerle eşleştirmelisiniz.**  
+Bu nedenle `POST/products` endpoint'i ile kullanıcıdan ürün ismi, eşik stok miktarı ve başlangıç stoğu alınmalı ve ürünler iç sisteminize kayıt edilmelidir.
+
+> **Fake Store API’den gelen ürünlerle bu ürünleri `productCode` gibi bir ortak alanla eşleştirebilirsiniz.**
+
+
+
+### 2. Kritik Stok Tespiti
+
+- `GET /products/low-stock` → Eşik değerin altındaki ürünleri listeler.
+
+
+### 3. Sipariş Otomasyonu
+
+- `POST /orders/check-and-place` → Kritik seviyedeki ürünler için Fake Store’dan en uygun fiyata sipariş oluşturur.
+- Fake Store ürünlerinden en uygun fiyatlı olanı seçmeniz, algoritmik mantık kurmanızı gerektirir.
+
 ## Proje Yapısı ve Endpoint'ler
-- Projede ürün bilgileri in-memory olarak tutulur. Örnek post ve get istekleri .http dosyalarında bulunmaktadır.
-- Ürünler aşağıdaki endpoint üzerinden POST tek tek eklenir:
+- Projede ürün bilgileri in-memory olarak tutulmuştur. Örnek post ve get istekleri .http dosyalarında bulunmaktadır.
+- Ürünler aşağıdaki endpoint üzerinden POST ile tek tek eklenir:
 
         http://localhost:5229/products
     Request:
