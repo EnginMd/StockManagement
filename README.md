@@ -30,6 +30,19 @@ Bu nedenle `POST/products` endpoint'i ile kullanıcıdan ürün ismi, eşik stok
 - `POST /orders/check-and-place` → Kritik seviyedeki ürünler için Fake Store’dan en uygun fiyata sipariş oluşturur.
 - Fake Store ürünlerinden en uygun fiyatlı olanı seçmeniz, algoritmik mantık kurmanızı gerektirir.
 
+### 4. API Güvenliği
+- API katmanında Fixed Window Limit kullanarak gelen istekleri sınırlandırmanız gerekir.
+- Kullanıcı formlarında Cross-Site Request Forgery (XSRF/CSRF) saldırılarını engellemeniz
+gerekir.
+- Request veya rendering kısımlarında Cross-Site Scripting (XSS) saldırılarını engellemeniz
+gerekir.
+
+### 5. Bonus Görev – Stokları Roma Rakamı ile Göster
+Ürün stok miktarları, kullanıcıya HTML ortamında **Roma rakamı** ile gösterilmelidir.
+Bu dönüşümün JavaScript ile yapılmasını bekliyoruz. 
+
+Örnek çıktı: `Stok: IV adet`
+
 ## Proje Yapısı ve Endpoint'ler
 - Projede ürün bilgileri in-memory olarak tutulmuştur. Örnek post ve get istekleri .http dosyalarında bulunmaktadır.
 - Ürünler aşağıdaki endpoint üzerinden POST ile tek tek eklenir:
